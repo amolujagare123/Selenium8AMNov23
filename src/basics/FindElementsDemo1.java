@@ -1,3 +1,5 @@
+package basics;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,7 +10,7 @@ import java.util.List;
 public class FindElementsDemo1 {
 
     public static void main(String[] args) {
-
+    //
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://stock.scriptinglogic.org/");
