@@ -6,21 +6,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class JobSites {
+public class JobSites extends BaseClass{
 
-    WebDriver driver;
-    @BeforeClass
-    public void openBrowser()
-    {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
 
-    @AfterClass
-    public void closeBrowser()
-    {
-        driver.close();
-    }
 
     @Test
     public void visitNaukri() {
@@ -34,7 +22,7 @@ public class JobSites {
         // Add assertions or other test actions as needed
     }
 
-    @Test
+    @Test (enabled = false)
     public void accessMonsterIndia() {
         driver.get("https://www.monsterindia.com/");
         // Add assertions or other test actions as needed

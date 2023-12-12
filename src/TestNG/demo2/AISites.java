@@ -6,20 +6,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class AISites {
-    WebDriver driver;
-    @BeforeClass
-    public void openBrowser()
-    {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+public class AISites extends  BaseClass {
 
-    @AfterClass
-    public void closeBrowser()
-    {
-        driver.close();
-    }
 
     @Test
     public void chatGpt()

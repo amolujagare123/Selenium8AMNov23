@@ -1,0 +1,29 @@
+<suite name="project name">
+
+    <test name="module 1">
+        <classes>
+            <class name="TestNG.demo.ClassOne"/>
+
+            <class name="TestNG.demo.ClassTwo">
+                <methods>
+                    <exclude name="classTwoTest3"/>
+                    <exclude name="classTwoTest1"/>
+                </methods>
+            </class>
+
+
+        </classes>
+
+    </test>
+
+    <test name="module 2">
+        <classes>
+            <class name="TestNG.demo.ClassThree">
+                <methods>
+                    <include name ="classThreeTest2"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
