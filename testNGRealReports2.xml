@@ -1,0 +1,17 @@
+<suite name="Demo Suite">
+    <listeners>
+        <listener class-name = "MyListeners.MyExtentListener"/>
+    </listeners>
+    <test name="Test 1">
+        <classes>
+            <class name="TestNG.demo2.SocialSites"/>
+            <class name="TestNG.demo2.AISites"/>
+        </classes>
+    </test>
+
+    <test name="Test 2">
+        <classes>
+            <class name="TestNG.demo2.JobSites"/>
+        </classes>
+    </test>
+</suite>
