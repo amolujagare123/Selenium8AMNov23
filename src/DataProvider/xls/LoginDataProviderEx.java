@@ -1,13 +1,9 @@
-package DataProvider;
+package DataProvider.xls;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +14,7 @@ import org.testng.annotations.Test;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class LoginDataProviderExHeader {
+public class LoginDataProviderEx {
 
     @Test (dataProvider = "getData")
     public void loginTest1(String username,String password)
@@ -40,35 +36,29 @@ public class LoginDataProviderExHeader {
     @DataProvider
     public Object[][] getData() throws IOException {
 
-        FileInputStream fis = new FileInputStream("Data/Data2.xlsx");
-        XSSFWorkbook workbook = new XSSFWorkbook(fis);
-        XSSFSheet sheet = workbook.getSheet("Sheet2");
+
+       /* data[0][0] = "admin";
+        data[0][1] = "admin";
+
+        data[1][0] = "invalid-1";
+        data[1][1] = "invalid-1";
+
+        data[2][0] = "invalid-2";
+        data[2][1] = "invalid-2";
+
+        data[3][0] = "invalid-3";
+        data[3][1] = "invalid-3";*/
+
+        FileInputStream fis = new FileInputStream("Data/Data.xls");
+        HSSFWorkbook workbook = new HSSFWorkbook(fis);
+        HSSFSheet sheet = workbook.getSheet("Sheet1");
         int rowCount = sheet.getPhysicalNumberOfRows();
-
-        Object[][] data = new Object[rowCount-1][2];
-
-        for (int i=0;i<rowCount-1;i++)
+        Object[][] data = new Object[rowCount][2];
+        for (int i=0;i<rowCount;i++)
         {
-            XSSFRow row = sheet.getRow(i+1);
-
-            XSSFCell username = row.getCell(0);
-
-            if(username==null)
-                data[i][0] = "";
-            else {
-                username.setCellType(CellType.STRING);
-                data[i][0] = username.toString().trim();
-            }
-
-
-            XSSFCell password = row.getCell(1);
-            if (password==null)
-                data[i][1] ="";
-            else {
-                password.setCellType(CellType.STRING);
-                data[i][1] = password.toString().trim();
-            }
-
+            HSSFRow row = sheet.getRow(i);
+            data[i][0] = row.getCell(0).toString().trim();
+            data[i][1] = row.getCell(1).toString().trim();
         }
 
         return data;

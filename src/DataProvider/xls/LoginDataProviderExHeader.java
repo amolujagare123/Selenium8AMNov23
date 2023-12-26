@@ -1,9 +1,8 @@
-package DataProvider;
+package DataProvider.xls;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +13,7 @@ import org.testng.annotations.Test;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class LoginDataProviderEx {
+public class LoginDataProviderExHeader {
 
     @Test (dataProvider = "getData")
     public void loginTest1(String username,String password)
@@ -51,12 +50,16 @@ public class LoginDataProviderEx {
 
         FileInputStream fis = new FileInputStream("Data/Data.xls");
         HSSFWorkbook workbook = new HSSFWorkbook(fis);
-        HSSFSheet sheet = workbook.getSheet("Sheet1");
+        HSSFSheet sheet = workbook.getSheet("Sheet2");
         int rowCount = sheet.getPhysicalNumberOfRows();
-        Object[][] data = new Object[rowCount][2];
-        for (int i=0;i<rowCount;i++)
+
+        Object[][] data = new Object[rowCount-1][2];
+
+        for (int i=0;i<rowCount-1;i++)
         {
-            HSSFRow row = sheet.getRow(i);
+            HSSFRow row = sheet.getRow(i+1);
+
+            //if(i==4)
             data[i][0] = row.getCell(0).toString().trim();
             data[i][1] = row.getCell(1).toString().trim();
         }

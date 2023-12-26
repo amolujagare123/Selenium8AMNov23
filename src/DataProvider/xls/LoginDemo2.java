@@ -1,4 +1,4 @@
-package DataProvider;
+package DataProvider.xls;
 
 
 import org.openqa.selenium.By;
