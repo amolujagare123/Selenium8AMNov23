@@ -79,6 +79,7 @@ public class LoginDemo {
         System.out.println("actual:"+actual);
 
         Assert.assertEquals(actual,expected,"incorrect or no error message");
+        Assert.assertEquals(actual,expected);
     }
 
     @Test
